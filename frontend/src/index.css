@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  #print-section {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    background-color: white;
+  }
+}
+
+ /* Custom table adjustments for PDF rendering */
+  @media print {
+    table {
+      width: 100% !important;
+      page-break-before: always;
+    }
+    .overflow-x-auto {
+      overflow: visible !important;
+    }
+  }
