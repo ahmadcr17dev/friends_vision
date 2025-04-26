@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="mt-[5rem] flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <div className="flex flex-col items-center mb-6">
           <img src={file} alt="Logo" className="w-20 h-20 mb-2 rounded-full" />

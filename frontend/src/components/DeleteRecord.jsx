@@ -75,23 +75,23 @@ const DeleteRecord = () => {
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-8 text-center">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center">
         Delete Student Record
       </h2>
 
-      <div className="flex flex-col items-center justify-center mb-8">
-        <div className="flex gap-2 w-full md:w-2/3">
+      <div className="flex flex-col items-center justify-center mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row gap-2 w-full md:w-2/3">
           <input
             type="text"
             placeholder="Enter Roll Number"
             value={rollNumber}
             onChange={(e) => setRollNumber(e.target.value)}
-            className="flex-1 text-black bg-white px-[1rem] border rounded-lg outline-none"
+            className="flex-1 text-black bg-white px-4 py-2 border rounded-lg outline-none"
             // onKeyPress={(e) => e.key === "Enter" && fetchStudent()}
           />
           <Button
             onClick={fetchStudent}
-            className="w-fit bg-violet-600 hover:cursor-pointer hover:bg-violet-700 px-[3rem]"
+            className="w-full sm:w-fit bg-violet-600 hover:cursor-pointer hover:bg-violet-700 px-4 sm:px-12 py-2"
           >
             {loading ? "Searching..." : "Search"}
           </Button>
@@ -116,60 +116,62 @@ const DeleteRecord = () => {
 
       {studentData && (
         <>
-          <div className="relative overflow-x-auto sm:rounded-lg">
-            <Table className="w-full min-w-max text-center">
-              <Table.Head className="uppercase text-white">
-                <Table.HeadCell className="px-6 py-3 min-w-[100px] text-white font-medium bg-gray-700">
-                  ID
-                </Table.HeadCell>
-                <Table.HeadCell className="px-6 py-3 min-w-[200px] text-white font-medium bg-gray-700">
-                  Student Name
-                </Table.HeadCell>
-                <Table.HeadCell className="px-6 py-3 min-w-[200px] text-white font-medium bg-gray-700">
-                  Father Name
-                </Table.HeadCell>
-                <Table.HeadCell className="px-6 py-3 min-w-[150px] text-white font-medium bg-gray-700">
-                  Roll Number
-                </Table.HeadCell>
-                <Table.HeadCell className="px-6 py-3 min-w-[200px] text-white font-medium bg-gray-700">
-                  Course
-                </Table.HeadCell>
-                <Table.HeadCell className="px-6 py-3 min-w-[150px] text-white font-medium bg-gray-700">
-                  Duration
-                </Table.HeadCell>
-              </Table.Head>
+          <div className="overflow-x-auto">
+            <div className="min-w-[600px] sm:min-w-0">
+              <Table className="w-full">
+                <Table.Head className="uppercase text-white">
+                  <Table.HeadCell className="px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white font-medium bg-gray-700">
+                    ID
+                  </Table.HeadCell>
+                  <Table.HeadCell className="px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white font-medium bg-gray-700">
+                    Student Name
+                  </Table.HeadCell>
+                  <Table.HeadCell className="px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white font-medium bg-gray-700">
+                    Father Name
+                  </Table.HeadCell>
+                  <Table.HeadCell className="px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white font-medium bg-gray-700">
+                    Roll No.
+                  </Table.HeadCell>
+                  <Table.HeadCell className="px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white font-medium bg-gray-700">
+                    Course
+                  </Table.HeadCell>
+                  <Table.HeadCell className="px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white font-medium bg-gray-700">
+                    Duration
+                  </Table.HeadCell>
+                </Table.Head>
 
-              <Table.Body className="divide-y divide-gray-200">
-                <Table.Row className="text-black">
-                  <Table.Cell className="px-6 py-4 whitespace-nowrap font-medium">
-                    {studentData.id}
-                  </Table.Cell>
-                  <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                    {studentData.name}
-                  </Table.Cell>
-                  <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                    {studentData.father_name}
-                  </Table.Cell>
-                  <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                    {studentData.roll_number}
-                  </Table.Cell>
-                  <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                    {studentData.course_name}
-                  </Table.Cell>
-                  <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                    {studentData.course_duration} months
-                  </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+                <Table.Body className="divide-y divide-gray-200">
+                  <Table.Row className="text-black bg-white">
+                    <Table.Cell className="px-3 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm sm:text-base">
+                      {studentData.id}
+                    </Table.Cell>
+                    <Table.Cell className="px-3 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm sm:text-base">
+                      {studentData.name}
+                    </Table.Cell>
+                    <Table.Cell className="px-3 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm sm:text-base">
+                      {studentData.father_name}
+                    </Table.Cell>
+                    <Table.Cell className="px-3 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm sm:text-base">
+                      {studentData.roll_number}
+                    </Table.Cell>
+                    <Table.Cell className="px-3 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm sm:text-base">
+                      {studentData.course_name}
+                    </Table.Cell>
+                    <Table.Cell className="px-3 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm sm:text-base">
+                      {studentData.course_duration} months
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </div>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-4">
             <Button
               onClick={deleteStudent}
               disabled={loading}
               color="failure"
-              className="mt-4 bg-violet-600 hover:bg-violet-700 hover:bg-violet-700 w-fit px-[3rem] hover:cursor-pointer"
+              className="w-full sm:w-fit bg-violet-600 hover:bg-violet-700 px-4 sm:px-12 py-2"
             >
               {loading ? "Deleting..." : "Delete Student Record"}
             </Button>

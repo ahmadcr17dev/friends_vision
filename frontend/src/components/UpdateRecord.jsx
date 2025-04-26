@@ -77,6 +77,7 @@ const UpdateRecord = () => {
   const handleUpdateClick = (student) => {
     setSelectedStudent(student);
     setFormData({
+      ...student,
       name: student.name,
       father_name: student.father_name,
       roll_number: student.roll_number,
@@ -102,22 +103,10 @@ const UpdateRecord = () => {
     setShowModal(true);
   };
 
-  //   const handleInputChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       [name]: value,
-  //     }));
-  //   };
-
   const handleInputChange = (e) => {
-    const { name, value, type } = e.target;
-
-    // Handle all input changes including radio buttons
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "radio" ? value : value,
-    }));
+    const { name, value } = e.target;
+    console.log(`Setting ${name} to:`, value);
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -167,9 +156,12 @@ const UpdateRecord = () => {
   }
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6">Update Student Records</h2>
+    <div className="p-2 sm:p-4">
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
+        Update Student Records
+      </h2>
 
+      {/* Search Input */}
       <div className="mb-4">
         <label htmlFor="roll-number-search" className="sr-only">
           Search by Roll Number
@@ -178,62 +170,63 @@ const UpdateRecord = () => {
           type="text"
           id="roll-number-search"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="Search by Roll Number (case insensitive)"
+          placeholder="Search by Roll Number"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      <div className="relative overflow-x-auto sm:rounded-lg">
-        <Table className="w-full min-w-max text-center">
-          <Table.Head className="uppercase text-white">
-            <Table.HeadCell className="px-6 py-3 min-w-[100px] text-white font-medium bg-gray-700">
+      {/* Responsive Table */}
+      <div className="relative overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-4">
+        <Table className="w-full text-center">
+          <Table.Head className="uppercase bg-gray-700 text-white">
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap bg-gray-700">
               ID
             </Table.HeadCell>
-            <Table.HeadCell className="px-6 py-3 min-w-[200px] text-white font-medium bg-gray-700">
-              Student Name
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap bg-gray-700">
+              Student
             </Table.HeadCell>
-            <Table.HeadCell className="px-6 py-3 min-w-[200px] text-white font-medium bg-gray-700">
-              Father Name
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap hidden sm:table-cell bg-gray-700">
+              Father
             </Table.HeadCell>
-            <Table.HeadCell className="px-6 py-3 min-w-[150px] text-white font-medium bg-gray-700">
-              Roll Number
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap bg-gray-700">
+              Roll No
             </Table.HeadCell>
-            <Table.HeadCell className="px-6 py-3 min-w-[200px] text-white font-medium bg-gray-700">
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap hidden md:table-cell bg-gray-700">
               Course
             </Table.HeadCell>
-            <Table.HeadCell className="px-6 py-3 min-w-[150px] text-white font-medium bg-gray-700">
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap hidden sm:table-cell bg-gray-700">
               Duration
             </Table.HeadCell>
-            <Table.HeadCell className="px-6 py-3 min-w-[120px] text-white font-medium bg-gray-700">
+            <Table.HeadCell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap bg-gray-700">
               Actions
             </Table.HeadCell>
           </Table.Head>
 
           <Table.Body className="divide-y divide-gray-200">
             {filteredStudents.map((student) => (
-              <Table.Row key={student.id} className="text-black">
-                <Table.Cell className="px-6 py-4 whitespace-nowrap font-medium">
+              <Table.Row key={student.id} className="hover:bg-gray-50">
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm">
                   {student.id}
                 </Table.Cell>
-                <Table.Cell className="px-6 py-4 whitespace-nowrap">
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium">
                   {student.name}
                 </Table.Cell>
-                <Table.Cell className="px-6 py-4 whitespace-nowrap">
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm hidden sm:table-cell">
                   {student.father_name}
                 </Table.Cell>
-                <Table.Cell className="px-6 py-4 whitespace-nowrap">
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm">
                   {student.roll_number}
                 </Table.Cell>
-                <Table.Cell className="px-6 py-4 whitespace-nowrap">
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm hidden md:table-cell">
                   {student.course_name}
                 </Table.Cell>
-                <Table.Cell className="px-6 py-4 whitespace-nowrap">
-                  {student.course_duration} months
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm hidden sm:table-cell">
+                  {student.course_duration} m
                 </Table.Cell>
-                <Table.Cell className="px-6 py-4 whitespace-nowrap">
+                <Table.Cell className="px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm">
                   <button
-                    className="font-medium text-blue-600 hover:cursor-pointer"
+                    className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
                     onClick={() => handleUpdateClick(student)}
                   >
                     Update
@@ -245,21 +238,22 @@ const UpdateRecord = () => {
         </Table>
       </div>
 
-      {/* Update Student Modal */}
+      {/* Responsive Update Modal */}
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
         size="7xl"
-        className="overflow-y-auto max-h-screen mx-[3rem] bg-white"
+        className="overflow-y-auto max-h-screen"
         position="center"
       >
-        <Modal.Header className="text-center">
+        <Modal.Header className="text-lg sm:text-xl text-center">
           Update Student Record
         </Modal.Header>
-        <Modal.Body className="overflow-y-auto max-h-[70vh]">
+        <Modal.Body className="overflow-y-auto max-h-[calc(100vh-8rem)] p-4 sm:p-6">
           {selectedStudent && (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Personal Information */}
                 <div>
                   <Label htmlFor="name">Student Name</Label>
                   <TextInput
@@ -319,32 +313,18 @@ const UpdateRecord = () => {
                     required
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="block font-medium">Course Duration</label>
-                  <div className="flex items-center space-x-4">
-                    <label className="flex items-center">
-                      <input
-                        type="radio"
-                        name="course_duration"
-                        value="3"
-                        checked={formData.course_duration === "3"}
-                        onChange={handleInputChange}
-                        className="mr-2"
-                      />
-                      3 Months
-                    </label>
-                    <label className="flex items-center">
-                      <input
-                        type="radio"
-                        name="course_duration"
-                        value="6"
-                        checked={formData.course_duration === "6"}
-                        onChange={handleInputChange}
-                        className="mr-2"
-                      />
-                      6 Months
-                    </label>
-                  </div>
+                <div>
+                  <Label htmlFor="course_duration">
+                    Course Duration (months)
+                  </Label>
+                  <TextInput
+                    id="course_duration"
+                    name="course_duration"
+                    type="number"
+                    value={formData.course_duration}
+                    onChange={handleInputChange}
+                    required
+                  />
                 </div>
                 <div>
                   <Label htmlFor="joining_date">Date of Starting</Label>
@@ -361,6 +341,7 @@ const UpdateRecord = () => {
                   <TextInput
                     id="whatsapp"
                     name="whatsapp"
+                    type="tel"
                     value={formData.whatsapp}
                     onChange={handleInputChange}
                   />
@@ -370,6 +351,7 @@ const UpdateRecord = () => {
                   <TextInput
                     id="guardian_contact"
                     name="guardian_contact"
+                    type="tel"
                     value={formData.guardian_contact}
                     onChange={handleInputChange}
                   />
@@ -398,6 +380,7 @@ const UpdateRecord = () => {
                 </div>
               </div>
 
+              {/* Address */}
               <div>
                 <Label htmlFor="postal_address">Postal Address</Label>
                 <textarea
@@ -410,8 +393,11 @@ const UpdateRecord = () => {
                 />
               </div>
 
+              {/* Academic Record */}
               <div className="border-t pt-4">
-                <h3 className="font-semibold mb-2">Previous Academic Record</h3>
+                <h3 className="font-semibold mb-3 text-sm sm:text-base">
+                  Previous Academic Record
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="school_name">School Name</Label>
@@ -487,13 +473,19 @@ const UpdateRecord = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center space-x-3 mt-4 py-4 hover:cursor-pointer">
-                <Button color="gray" onClick={() => setShowModal(false)}>
+
+              {/* Form Actions */}
+              <div className="flex flex-col sm:flex-row justify-center gap-3 mt-6 pt-4">
+                <Button
+                  color="gray"
+                  onClick={() => setShowModal(false)}
+                  className="w-full sm:w-auto"
+                >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-violet-600 hover:bg-violet-700 hover:cursor-pointer"
+                  className="w-full sm:w-auto bg-violet-600 hover:bg-violet-700"
                 >
                   Update Record
                 </Button>

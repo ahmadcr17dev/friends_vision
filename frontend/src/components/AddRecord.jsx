@@ -160,31 +160,16 @@ const AddRecord = () => {
       </div>
 
       <div className="space-y-1">
-        <label className="block font-medium">Course Duration</label>
-        <div className="flex items-center space-x-4">
-          <label className="flex items-center">
-            <input
-              type="radio"
-              name="course_duration"
-              value="3"
-              checked={formData.course_duration === "3"}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            3 Months
-          </label>
-          <label className="flex items-center">
-            <input
-              type="radio"
-              name="course_duration"
-              value="6"
-              checked={formData.course_duration === "6"}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            6 Months
-          </label>
-        </div>
+        <label className="block font-medium">Course Duration(In Months)</label>
+        <input
+          className="border p-2 rounded w-full"
+          type="text"
+          name="course_duration"
+          value={formData.course_duration}
+          placeholder="Enter course duration"
+          onChange={handleChange}
+          required
+        />
       </div>
 
       <div className="space-y-1">

@@ -8,9 +8,9 @@ const HeroSection = () => {
         <div className="flex flex-row justify-between px-6 xl:px-14 lg:px-14 md:px-14 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-[40px] lg:text-[40px] xl:text-[48px]">
-              First Institute of{" "}
-              <span className="text-violet-700">Professional</span> Courses in{" "}
-              <span className="text-violet-700">Kahuta</span>
+              <span className="text-violet-600">Friends Vision</span> Academy -
+              Gateway to <span className="text-violet-600">Professional</span>{" "}
+              Success
             </h1>
             <p className="max-w-2xl mb-6 font-regular text-gray-600 lg:mb-8 md:text-[1rem] lg:text-[1rem] xl:text-[1.19rem]">
               We are offering a huge variety of professional computer courses.
