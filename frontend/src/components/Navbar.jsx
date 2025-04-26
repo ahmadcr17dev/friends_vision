@@ -10,6 +10,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <nav className="bg-stone-100 font-poppins">
@@ -56,6 +60,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/"
+                  onClick={closeMenu}
                   className={({ isActive }) => {
                     return `block py-2 px-3 md:p-0 text-gray-900 rounded-sm ${
                       isActive ? "text-violet-600" : "text-gray-900"
@@ -68,6 +73,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/courses"
+                  onClick={closeMenu}
                   className={({ isActive }) => {
                     return `block py-2 px-3 md:p-0 text-gray-900 rounded-sm ${
                       isActive ? "text-violet-600" : "text-gray-900"
@@ -80,6 +86,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/admission"
+                  onClick={closeMenu}
                   className={({ isActive }) => {
                     return `block py-2 px-3 md:p-0 text-gray-900 rounded-sm ${
                       isActive ? "text-violet-600" : "text-gray-900"
@@ -92,6 +99,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/verification"
+                  onClick={closeMenu}
                   className={({ isActive }) => {
                     return `block py-2 px-3 md:p-0 text-gray-900 rounded-sm ${
                       isActive ? "text-violet-600" : "text-gray-900"
@@ -104,6 +112,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/login"
+                  onClick={closeMenu}
                   className={({ isActive }) => {
                     return `block py-2 px-3 md:p-0 text-gray-900 rounded-sm ${
                       isActive ? "text-violet-600" : "text-gray-900"
@@ -116,6 +125,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/about"
+                  onClick={closeMenu}
                   className={({ isActive }) => {
                     return `block py-2 px-3 md:p-0 text-gray-900 rounded-sm ${
                       isActive ? "text-violet-600" : "text-gray-900"
